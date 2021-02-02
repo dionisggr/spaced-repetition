@@ -1,0 +1,43 @@
+html, body, #root, main, .App  {
+  max-height: fit-content;
+  /* min-height: fit-content; */
+}
+
+main {
+  /* height: fit-content; */
+}
+
+#root {
+  padding-bottom: 150px;
+}
+
+body {
+  position: relative;
+}
+
+main {
+  height: 100%;
+  padding: 0 15px;
+}
+
+main form {
+  margin-top: -25px;
+}
+
+main section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+main section h2 {
+  text-align: center;
+  margin: 0;
+  margin-top: 10px;
+}
+
+main section p {
+  text-align: center;
+  margin-top: 25px;
+}

@@ -5,6 +5,8 @@ import AuthApiService from '../../services/auth-api-service'
 import Button from '../Button/Button'
 import './RegistrationForm.css'
 
+import config from '../../config';
+
 class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => { }
@@ -74,6 +76,17 @@ class RegistrationForm extends Component {
           <Input
             id='registration-password-input'
             name='password'
+            type='password'
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor='registration-repeat-password-input'>
+            Repeat password<Required />
+          </Label>
+          <Input
+            id='registration-repeat-password-input'
+            name='repeat-password'
             type='password'
             required
           />

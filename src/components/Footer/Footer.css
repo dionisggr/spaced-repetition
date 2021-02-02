@@ -1,0 +1,16 @@
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  color: white;
+  background-color: rgba(0, 0, 255, 0.966);
+  font-size: 14px;
+  height: 30px;
+  bottom: 0;
+  width: 100%;
+}
+
+#footer h3 {
+  margin: 0;
+}

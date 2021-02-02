@@ -1,0 +1,34 @@
+main form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 0;
+}
+
+main form div input {
+  max-width: 250px;
+  line-height: 2em;
+  margin-top: 5px;
+  border-radius: 3px;
+  border-width: 1px;
+}
+
+main form footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main form button {
+  width: 150px;
+  padding: 10px 20px;
+  margin: 25px 0 50px 0;
+  border-radius: 5px;
+  border-width: 1px;
+  cursor: pointer;
+  outline: none;
+}
+
+main form button:active {
+  transform: scale(0.90);
+}
