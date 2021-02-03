@@ -33,7 +33,7 @@ describe(`User story: Answer feedback`, function() {
         status: 200,
         response: 'fixture:language-guess-generic.json',
       })
-        .as('postListGuess')
+      .as('postListGuess')
     })
 
     it(`submits my answer typed in the form`, () => {
