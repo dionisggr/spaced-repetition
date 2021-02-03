@@ -1,19 +1,14 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import LanguageContext from "../../contexts/LanguageContext";
 import LanguageService from '../../services/language-api-service';
 
 class DashboardRoute extends React.Component {
   state = { language: "", words: [] };
 
-  static contextType = LanguageContext;
-
   componentDidMount() {
     LanguageService.getLanguageData()
       .then(res => {
         const { language, words } = res;
-        // this.context.language = language;
-        // this.context.words = words;
         this.setState({ language, words });
       })
       .catch(error => console.log({ error }));
