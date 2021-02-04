@@ -3,12 +3,12 @@ import LanguageService from "../../services/language-api-service";
 
 class LearningRoute extends Component {
   state = {
-    guess: "", answer: "", isCorrect: false,
+    guess: "", answer: "", isCorrect: null,
     word: "", nextWord: "",
     total: 0, correct: 0, incorrect: 0
   };
 
-  onSubmit = (evt, translation) => {
+  onSubmit = (evt) => {
     evt.preventDefault();
 
     const guess = evt.target['learn-guess-input'].value;
@@ -25,25 +25,32 @@ class LearningRoute extends Component {
           correct: wordCorrectCount,
           incorrect: wordIncorrectCount,
           nextWord,
-          isCorrect,
           answer,
-          guess
+          guess,
+          isCorrect
         };
 
         if (this.state.word === "") {
-          newState.word = nextWord;
+          newState.word = this.state.nextWord;
         };
 
+        if (this.state.isCorrect === undefined) {
+          delete newState.isCorrect;
+        };
+
+        console.log(this.state, newState);
+
         this.setState(newState);
+        
       })
       .catch(error => console.log({ error }));
   };
 
   nextWord = () => {
-    const newState = this.state;
+    const newState = { ...this.state };
     newState.word = this.state.nextWord;
-    newState.isCorrect = null;
-    this.setState({ newState });
+    newState.isCorrect = undefined;
+    this.setState(newState);
   };
 
   componentDidMount() {
@@ -56,28 +63,33 @@ class LearningRoute extends Component {
           wordIncorrectCount: incorrect,
         } = data;
 
-        const newState = { word, total, correct, incorrect };
-        this.setnewState(newState);
+        const newState = {
+          word, total, correct, incorrect
+        };
+        this.setState(newState);
       })
       .catch((error) => console.log({ error }));
   }
 
   render() {
+    console.log(this.state);
     const {
       word, total, correct, incorrect, isCorrect, answer, guess
     } = this.state;
 
     const h2 =
-      (!isCorrect)
-        ? (isCorrect === false)
+      (isCorrect === undefined || isCorrect === null)
+        ? 'Translate the word:'
+        : (isCorrect === false)
           ? 'Good try, but not quite right :('
-          : 'Translate the word:'
-        : 'You were correct! :D';
+          : (isCorrect === true)
+            ? 'You were correct! :D'
+            : null;
     
     const button =
-      (isCorrect === null)
-        ? <button type="submit">'Submit your answer'</button>
-        : <button>Try another word!</button>
+      (isCorrect === undefined || isCorrect === null)
+        ? <button type="submit">Submit your answer</button>
+        : <button onClick={this.nextWord}>Try another word!</button>
 
     return (
       <>
