@@ -1,7 +1,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A simple Spanish language trainer App for anyone!
 
 ### Live:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://devmap.vercel.app/
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://spaced-repetition-blue.vercel.app/
 ### API:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://afternoon-dawn-05389.herokuapp.com/ *(Landing Page)*
 
@@ -16,7 +16,7 @@
 
 ---
 ### DESCRIPTION
-The App allows users to train in Spanish for common words, and slowly scale up to more complex and less frequently words. It allows for users to keep track of the last word in their history, and their score progress. It will further keep history of each time the user has answered the translation correctly and incorrectly.
+The App allows users to train in Spanish for common words using the spaced repetition technique, and slowly scale up to more complex but less frequently used words. It allows for users to keep track of the last word in their history, and their score progress. It will further keep history of each time the user has answered the translation correctly and incorrectly.
 
 ### USER STORIES:
 - As a prospective user:
