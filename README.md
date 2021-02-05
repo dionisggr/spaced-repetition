@@ -1,5 +1,5 @@
 # LangCards: Spaced Repetition Capstone
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A simple Spanish language trainer App for anyone!
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A simple Spanish language trainer App using the spaced repetition technique for anyone!
 
 ### Live:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://spaced-repetition-blue.vercel.app/
@@ -68,7 +68,6 @@ The App allows users to train in Spanish for common words using the spaced repet
 
 #### LOGIN
 
-[Login](https://github.com/dionisggr/spaced-repetition-api/blob/main/README.md): `POST /api/auth/token`
 - 'Admin' credentials
   - Username: `dwight`
   - Password: `pass`
