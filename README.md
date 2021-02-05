@@ -72,17 +72,13 @@ The App allows users to train in Spanish for common words using the spaced repet
   - Username: `dwight`
   - Password: `pass`
       
-Register Page: User Registration
-[Registration](https://spaced-repetition-blue.vercel.app/register)
+[Register Page](https://spaced-repetition-blue.vercel.app/register): User Registration
 
-Login Page: User Login
-[Login](https://spaced-repetition-blue.vercel.app/login)
+[Login Page](https://spaced-repetition-blue.vercel.app/login): User Login
 
-Dashboard: Renders language/words progress and current scores
-[Dashboard](https://spaced-repetition-blue.vercel.app/)
+[Dashboard](https://spaced-repetition-blue.vercel.app/): Renders language/words progress and current scores
 
-Learning Page: Renders word to practice
-[Learning Page](https://spaced-repetition-blue.vercel.app/learn)
+[Learning Page](https://spaced-repetition-blue.vercel.app/learn): Renders word to practice
 
 ---
 ## Setup
