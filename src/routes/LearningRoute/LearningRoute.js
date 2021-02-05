@@ -104,9 +104,6 @@ class LearningRoute extends Component {
         <section className='DisplayScore'>
           <h2>{h2}</h2>
           <span>{word}</span>
-
-          <p>Your total score is: {total}</p>
-        </section>
         <label>
             You have answered this word correctly
               <span className='correct'>{correct}</span> times.
@@ -115,6 +112,8 @@ class LearningRoute extends Component {
             You have answered this word incorrectly
               <span className='incorrect'>{incorrect}</span> times.
           </label>
+          <p>Your total score is: {total}</p>
+        </section>
         <form className="translation" onSubmit={(evt) => this.onSubmit(evt, word.translation)}>
           {
             (!isCorrect && isCorrect !== false)
