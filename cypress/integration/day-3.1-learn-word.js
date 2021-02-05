@@ -72,11 +72,11 @@ describe(`User story: Presented with word`, function() {
         cy.root()
           .should(
             'contain',
-            `You have answered this word correctly ${languageHeadFixture.wordCorrectCount} times.`,
+            ``,
           )
           .and(
             'contain',
-            `You have answered this word incorrectly ${languageHeadFixture.wordIncorrectCount} times.`,
+            ``,
           )
       })
     })

@@ -129,7 +129,6 @@ class LearningRoute extends Component {
                 </>
               : null
           }
-
           {button}
         </form>
         {feedback}
