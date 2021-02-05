@@ -1,27 +1,13 @@
-html, body, #root, main, .App  {
-  max-height: fit-content;
-  /* min-height: fit-content; */
-}
-
-main {
-  /* height: fit-content; */
-}
-
-#root {
-  padding-bottom: 150px;
-}
-
-body {
-  position: relative;
-}
-
-main {
+html, body, #root, .App {
   height: 100%;
-  padding: 0 15px;
 }
 
-main form {
-  margin-top: -25px;
+main {
+  min-height: calc(100% - 80px);
+}
+
+main {
+  padding: 0 15px;
 }
 
 main section {

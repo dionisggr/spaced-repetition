@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LanguageService from "../../services/language-api-service";
+import './LearningRoute.css';
 
 class LearningRoute extends Component {
   state = {
@@ -11,7 +12,21 @@ class LearningRoute extends Component {
   onSubmit = (evt) => {
     evt.preventDefault();
 
-    const guess = evt.target['learn-guess-input'].value;
+    const isCorrect = this.state.isCorrect;
+
+    if (isCorrect === true || isCorrect === false) {
+      const newState = { ...this.state };
+      newState.word = this.state.nextWord;
+      newState.isCorrect = undefined;
+      newState.guess = null;
+      newState.correct = this.state.wordCorrectCount;
+      newState.incorrect = this.state.wordIncorrectCount;
+      
+      return this.setState(newState);
+    }
+
+    let guess = evt.target['learn-guess-input'].value;
+    evt.target['learn-guess-input'].value = '';
 
     LanguageService.submitGuess(guess)
       .then(res => {
@@ -22,35 +37,18 @@ class LearningRoute extends Component {
 
         const newState = {
           total: totalScore,
-          correct: wordCorrectCount,
-          incorrect: wordIncorrectCount,
+          wordCorrectCount,
+          wordIncorrectCount,
           nextWord,
           answer,
           guess,
           isCorrect
         };
 
-        if (this.state.word === "") {
-          newState.word = this.state.nextWord;
-        };
-
-        if (this.state.isCorrect === undefined) {
-          delete newState.isCorrect;
-        };
-
-        console.log(this.state, newState);
-
         this.setState(newState);
         
       })
       .catch(error => console.log({ error }));
-  };
-
-  nextWord = () => {
-    const newState = { ...this.state };
-    newState.word = this.state.nextWord;
-    newState.isCorrect = undefined;
-    this.setState(newState);
   };
 
   componentDidMount() {
@@ -68,12 +66,12 @@ class LearningRoute extends Component {
         };
         this.setState(newState);
       })
+
       .catch((error) => console.log({ error }));
   }
 
   render() {
-    console.log(this.state);
-    const {
+    let {
       word, total, correct, incorrect, isCorrect, answer, guess
     } = this.state;
 
@@ -86,33 +84,54 @@ class LearningRoute extends Component {
             ? 'You were correct! :D'
             : null;
     
+    const feedback = 
+      (!isCorrect)
+        ? null
+        : <div className='DisplayFeedback'>
+            <p>The correct translation for {word} was {answer} and you chose {guess}!</p>
+          </div>
+    
     const button =
       (isCorrect === undefined || isCorrect === null)
         ? <button type="submit">Submit your answer</button>
-        : <button onClick={this.nextWord}>Try another word!</button>
+        : <button type='submit'>Try another word!</button>
+    
+    correct = (isCorrect) ? correct + 1 : correct;
+    incorrect = (isCorrect === false) ? incorrect + 1 : incorrect;
 
     return (
       <>
         <section className='DisplayScore'>
           <h2>{h2}</h2>
           <span>{word}</span>
-          <label>You have answered this word correctly {correct} times.</label>
-          <label>You have answered this word incorrectly {incorrect} times.</label>
+          <label>
+            You have answered this word correctly
+              <span className='correct'>{correct}</span> times.
+          </label>
+          <label>
+            You have answered this word incorrectly
+              <span className='incorrect'>{incorrect}</span> times.
+          </label>
           <p>Your total score is: {total}</p>
         </section>          
         <form className="translation" onSubmit={(evt) => this.onSubmit(evt, word.translation)}>
-          <label htmlFor="learn-guess-input">
-            What's the translation for this word?
-          </label>
-          <input
-            type="text" placeholder="translation" required
-            id="learn-guess-input" name="learn-guess-input"
-          />
+          {
+            (!isCorrect && isCorrect !== false)
+              ? <>
+                  <label htmlFor="learn-guess-input">
+                  What's the translation for this word?
+                  </label>
+                  <input
+                    type="text" placeholder="translation" required
+                    id="learn-guess-input" name="learn-guess-input"
+                  />
+                </>
+              : null
+          }
+
           {button}
         </form>
-        <div className='DisplayFeedback'>
-          <p>The correct translation for {word} was {answer} and you chose {guess}!</p>
-        </div>
+        {feedback}
       </>
     );
   }

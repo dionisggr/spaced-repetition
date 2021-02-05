@@ -1,0 +1,56 @@
+.DisplayScore {
+  display: flex;
+  height: fit-content;
+}
+
+.DisplayScore span {
+  margin: 15% 0;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.DisplayScore label {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+span.correct {
+  color: green;
+  font-size: 17px;
+  margin-left: 4px;
+}
+
+span.incorrect {
+  color: red;
+  font-size: 17px;
+  margin-left: 4px;
+}
+
+.DisplayScore p {
+  margin: 35px 0;
+  font-weight: bolder;
+}
+
+.translation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.translation label {
+  font-weight: bold;
+}
+
+.translation input {
+  width: 50%;
+  max-width: 400px;
+  align-self: center;
+  margin-top: 15px;
+  line-height: 2em;
+}
+
+.translation button {
+  width: 100%;
+  width: 200px;
+  height: 50px;
+}

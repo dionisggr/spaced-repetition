@@ -2,12 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   color: white;
-  background-color: rgba(0, 0, 255, 0.966);
+  background-color: rgb(29, 89, 168);
   font-size: 14px;
   height: 30px;
-  bottom: 0;
   width: 100%;
 }
 
