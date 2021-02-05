@@ -85,16 +85,10 @@ class LearningRoute extends Component {
             : null;
     
     const feedback = 
-      (!isCorrect)
+      (isCorrect === null || isCorrect === undefined)
         ? null
         : <div className='DisplayFeedback'>
-            <p>The correct translation for
-              <span class='answer'>{word}</span>
-              was
-              <span className='guess'>{answer}</span>
-              and you chose
-              <span>{guess}</span>!
-            </p>
+            <p>The correct translation for {word} was {answer} and you chose {guess}!</p>
           </div>
     
     const button =
@@ -110,7 +104,10 @@ class LearningRoute extends Component {
         <section className='DisplayScore'>
           <h2>{h2}</h2>
           <span>{word}</span>
-          <label>
+
+          <p>Your total score is: {total}</p>
+        </section>
+        <label>
             You have answered this word correctly
               <span className='correct'>{correct}</span> times.
           </label>
@@ -118,8 +115,6 @@ class LearningRoute extends Component {
             You have answered this word incorrectly
               <span className='incorrect'>{incorrect}</span> times.
           </label>
-          <p>Your total score is: {total}</p>
-        </section>          
         <form className="translation" onSubmit={(evt) => this.onSubmit(evt, word.translation)}>
           {
             (!isCorrect && isCorrect !== false)
