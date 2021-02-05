@@ -65,11 +65,12 @@ The App allows users to train in Spanish for common words using the spaced repet
 
 ### NAVIGATION
 
-- LOGIN
-  - [Login](https://github.com/dionisggr/spaced-repetition-api/blob/main/README.md): `POST /api/auth/token`
-    - 'Admin' credentials
-      - Username: `dwight`
-      - Password: `pass`
+#### LOGIN
+
+[Login](https://github.com/dionisggr/spaced-repetition-api/blob/main/README.md): `POST /api/auth/token`
+- 'Admin' credentials
+  - Username: `dwight`
+  - Password: `pass`
       
 Home Page: Welcome Page
 ![HomePage]()
