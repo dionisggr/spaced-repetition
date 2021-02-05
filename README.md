@@ -3,7 +3,7 @@
 ### Live:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://spaced-repetition-blue.vercel.app/
 ### API:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://afternoon-dawn-05389.herokuapp.com/ *(Landing Page)*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://fathomless-headland-59350.herokuapp.com/ *(Landing Page)*
 
 ### Kanban board:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://github.com/dionisggr/spaced-repetition/projects/1
