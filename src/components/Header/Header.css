@@ -3,7 +3,7 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(36, 98, 179);
-  padding: 0 15px 0 5px;
+  padding: 0 20px 0 10px;
   height: 50px;
   width: 100%;
   color: white;
@@ -18,4 +18,31 @@ header h1 {
 header a {
   text-decoration: none;
   color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 125px;
+  font-size: 2vh;
+}
+
+@media all and (min-width: 600px) {
+  header {
+    height: 75px;
+    padding-left: 20px;
+  }
+
+  header h1 {
+    font-size: 3vh;
+  }
+
+  header a {
+    padding-right: 15px;
+  }
+  
+  nav {
+    width: 200px;
+    font-size: 2.5vh;
+  }
 }

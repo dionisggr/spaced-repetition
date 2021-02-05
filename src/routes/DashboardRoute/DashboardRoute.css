@@ -37,10 +37,14 @@ label.dashboard {
   align-items: center;
   text-align: center;
   width: 80%;
+  max-width: 500px;
   padding: 10px;
 }
 
 .practice-words {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 

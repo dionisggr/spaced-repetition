@@ -14,6 +14,11 @@
   font-size: 14px;
 }
 
+.DisplayFeedback {
+  display: flex;
+  justify-content: center;
+}
+
 span.correct {
   color: green;
   font-size: 17px;
@@ -53,4 +58,16 @@ span.incorrect {
   width: 100%;
   width: 200px;
   height: 50px;
+}
+
+.DisplayFeedback span {
+  display: inline-block;
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+@media all and (min-width: 700px) {
+  .DisplayScore span {
+    margin: 100px 0;
+  }
 }

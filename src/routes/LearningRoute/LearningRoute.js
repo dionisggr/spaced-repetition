@@ -88,7 +88,13 @@ class LearningRoute extends Component {
       (!isCorrect)
         ? null
         : <div className='DisplayFeedback'>
-            <p>The correct translation for {word} was {answer} and you chose {guess}!</p>
+            <p>The correct translation for
+              <span class='answer'>{word}</span>
+              was
+              <span className='guess'>{answer}</span>
+              and you chose
+              <span>{guess}</span>!
+            </p>
           </div>
     
     const button =

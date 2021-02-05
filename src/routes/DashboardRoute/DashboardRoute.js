@@ -10,7 +10,6 @@ class DashboardRoute extends React.Component {
     LanguageService.getLanguageData()
       .then((res) => {
         const { language, words } = res;
-        console.log('dashboard words=', words);
         this.setState({ language, words });
       })
       .catch((error) => console.log({ error }));
