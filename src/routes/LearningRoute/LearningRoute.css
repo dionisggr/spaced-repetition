@@ -19,13 +19,13 @@
   justify-content: center;
 }
 
-span.correct {
+section span.correct {
   color: green;
   font-size: 17px;
   margin-left: 4px;
 }
 
-span.incorrect {
+section span.incorrect {
   color: red;
   font-size: 17px;
   margin-left: 4px;
