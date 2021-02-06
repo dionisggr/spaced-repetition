@@ -21,13 +21,14 @@
 
 section span.correct {
   color: green;
-  font-size: 17px;
+  font-size: 20px;
   margin-left: 4px;
 }
 
 section span.incorrect {
-  color: red;
-  font-size: 17px;
+  color: rgb(255, 38, 0);
+  font-size: 20px;
+  font-weight: bolder;
   margin-left: 4px;
 }
 
