@@ -13,7 +13,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vercel
 
 ### Languages/Tools:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HTML5, CSS3, Javascript, React, Mocha, Chai, API fetches
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HTML5, CSS3, Javascript, React, Cypress, API fetches
 
 ---
 ### DESCRIPTION
