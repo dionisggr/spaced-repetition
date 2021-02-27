@@ -1,15 +1,72 @@
 #footer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  color: white;
-  background-color: rgb(29, 89, 168);
-  font-size: 14px;
-  height: 30px;
   width: 100%;
+  height: 22vw;
+  min-height: 65px;
+  max-height: 100px;
+  padding: 5px 15px 10px 15px;
+  background-color: rgb(29, 89, 168);
+  color: white;
+  font-size: 3.3vw;
+  font-size: 1.5vmax;
 }
 
-#footer h3 {
+#footer h2 {
   margin: 0;
   font-weight: 100;
+  margin-top: 5px;
+}
+
+#footer a {
+  color: white;
+  font-size: 8vw;
+  font-size: 4vmax;
+  margin: 0 3vw;
+}
+
+#footer .icons {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  max-width: 400px;
+}
+
+@media only screen and (min-width: 450px) {
+  #footer h2 {
+    font-size: 2.3vh;
+    margin-top: 10px;
+  }
+
+  #footer a {
+    font-size: 4.5vh;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #footer {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    height: 65px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  #footer h2 {
+    font-size: 2.3vh;
+    margin-top: 10px;
+  }
+
+  #footer a {
+    font-size: 4.5vh;
+    margin: 0;
+  }
+
+  #footer .icons {
+    max-width: 500px;
+  }
 }

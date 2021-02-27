@@ -38,7 +38,6 @@ class RegistrationForm extends Component {
           username.value = "";
           password.value = "";
           this.context.processLogin(res.authToken);
-          // this.props.onLoginSuccess();
           this.props.history.push('/');
         })
         .catch((res) => {

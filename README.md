@@ -1,26 +1,19 @@
-# LangCards: Spaced Repetition Capstone
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A simple Spanish language trainer App using the spaced repetition technique for anyone!
-
-### Live:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://spaced-repetition-blue.vercel.app/
-### API:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://fathomless-headland-59350.herokuapp.com/ *(No Landing Page)*
-
-### API GithHub:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://github.com/dionisggr/spaced-repetition-api/
-
-### Kanban board:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://github.com/dionisggr/spaced-repetition/projects/1
-
-### Deployment Platform:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vercel
-
-### Languages/Tools:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Javascript, React, CSS3, Cypress, API fetches
+# LangCards: Spaced-Repetition Capstone
+A simple Spanish language trainer app for anyone that uses the spaced repetition revision technique for a more effective learning experience.
 
 ---
-### DESCRIPTION
-The App allows users to train in Spanish for common words using the spaced repetition technique, and slowly scale up to more complex but less frequently used words. It allows for users to keep track of the last word in their history, and their score progress. It will further keep history of each time the user has answered the translation correctly and incorrectly.
+
+### Working Prototype
+#### Client Live:
+https://spaced-repetition-blue.vercel.app
+
+#### API URL
+https://cryptic-badlands-24275.herokuapp.com
+
+#### API GitHub:
+https://github.com/dionisggr/spaced-repetition-api
+
+---
 
 ### USER STORIES:
 - As a prospective user:
@@ -36,7 +29,6 @@ The App allows users to train in Spanish for common words using the spaced repet
   - I can enter my username and password
   - If my submitted username and password are incorrect, I'm given an appropriate error message so that I can attempt to login again
   - If my submitted username and password are correct, the app "logs me in" and redirects me to my dashboard
-
 - As a logged in user:
   - The application remembers that I'm logged in and doesn't redirect me to the registration page
   - I'm directed to a dashboard where I can see my progress learning my language
@@ -65,26 +57,377 @@ The App allows users to train in Spanish for common words using the spaced repet
   - I can learn another word after receiving feedback from my previous answer
     - I'm presented with a button that I can click to learn another word
     - When clicking on the button I see the next word to learn
----
-
-### NAVIGATION
-
-#### LOGIN
-
-- 'Admin' credentials
-  - Username: `dwight`
-  - Password: `pass`
-      
-[Register Page](https://spaced-repetition-blue.vercel.app/register): User Registration
-
-[Login Page](https://spaced-repetition-blue.vercel.app/login): User Login
-
-[Dashboard](https://spaced-repetition-blue.vercel.app/): Renders language/words progress and current scores
-
-[Learning Page](https://spaced-repetition-blue.vercel.app/learn): Renders word to practice
 
 ---
-## Setup
+
+### Technology
+* **Front-End:** React.js, CSS3, HTML5, Javascript, Cypress, API fetch
+* **Back-End:** Javascript, Node.js, Express.js, Knex.js, PostgreSQL, Mocha, Chai, Supertest, Nodemon, Postgrator, Dotenv, JWT, Bcrypt, Morgan, XSS, CORS, Helmet, HTML5, CI scripts
+* **Development Environment:** Vercel, Heroku, DBeaver, Postman
+
+---
+
+### Wireframes
+
+Register Page
+:-------------------------:
+![Register Page](/public/register.png)
+
+Login Page
+:-------------------------:
+![Login Page](/public/login.png)
+
+Dashboard
+:-------------------------:
+![Dashboard](/public/dashboard.png)
+
+Word Page
+:-------------------------:
+![Home Page](/public/word.png)
+
+Correct Answer Page
+:-------------------------:
+![User Lists](/public/register.png)
+
+Incorrect Answer Page
+:-------------------------:
+![List Page](/public/register.png)
+
+---
+
+### Functionality
+The app's functionality includes:
+* Any User
+  * May create an account
+* Registered User
+  * User lands on Dashboard with words and total score information
+  * May begin quiz and see next words to answer based on previous history
+  * Is provided correct or incorrect feedback based on answer
+    
+---
+
+### Front-End Structure
+* __Index.js__ - (stateless)
+    * __App.js__ - (stateful)
+      * __Header.js__ - (stateless)
+      * __DashboardRoute.js__ - (stateful)
+      * __LearningRoute.js__ - (stateful)
+        * __LoginForm.js__ - (stateful)
+          * __Label.js__ - (stateless)
+          * __Input.js__ - (stateless)
+          * __Button.js__ - (stateless)
+      * __RegistrationRoute.js__ - (stateless)
+        * __RegistrationForm.js__ - (stateless)
+          * __Required.js__ - (stateless)
+          * __Label.js__ - (stateless)
+          * __Input.js__ - (stateless)
+          * __Button.js__ - (stateless)
+      * __LoginRoute.js__ - (stateless)
+      * __NotFoundRoute.js__ - (stateless)
+    * __Footer.js__ - (stateless)
+
+---
+
+### Back-End Structure
+- User (database table)
+  - id (serial, primary key)
+  - username (unique text, not null)
+  - password (text, not null)
+  - name (text, not null)
+- Language (database table)
+  - id (text, primary key)
+  - name (text, not null)
+  - total_score (smallint, default 0)
+  - user_id (integer, foreign key [user.id])
+- Word (database table)
+  - id (serial, primary key)
+  - original (text, not null)
+  - translation (text, not null)
+  - memory_value (smallint, default 0)
+  - correct_count (smallint, default 0)
+  - incorrect_count (smallint, default 0)
+  - language_id (text, foreign key [language.id])
+  - next (integer, foreign key [word.id])
+
+---
+
+## API Documentation
+
+### Endpoints that require Authentication
+Closed endpoints that require a valid username and password to be included in the header body of the request.
+
+#### Login
+
+- Step 1: *(Generate JSON Web Token)*
+  - `POST /api/token`
+    - 'Admin' credentials
+      - Username: `dwight`
+      - Password: `pass`
+- Step 2: &lt;*Use generated JSON Web Token (3 hrs)*&gt;
+- Step 3 *(Optional): Refresh JSON Web Token*
+  -  `PUT /api/token`
+
+### Endpoints that require Authorization
+Closed endpoints that require a valid JSON Web Token to be inlcuded in the header 'Authorization' of the request.
+```
+// Add to request header
+headers: {'Authorization': 'Bearer <JSON Web Token>'}
+```
+If sending content through request body (`POST` `PUT`), don't forget to add the following in the headers:
+```
+// Add to request header
+headers" {'Content-Type': 'application/json'}
+```
+
+### User related
+Each endpoint manipulates information related to users.
+- [Create User (Register)](): `POST /api/user`
+
+#### Create User *(Register)*
+**URL:** `/api/user` \
+**Method:** `POST` \
+**Auth required:** No
+- `Bearer my-secret-key`
+
+##### Request Body
+*Requires `headers: {'Content-Type': 'application/json'}`*
+```
+{
+  "name": "Dwight Schrute"
+  "username": "dwight",
+  "password": "pass"
+}
+```
+| Name            | Type    | In     | Description               |
+| ----------------| ------- | ------ | ------------------------- |
+| `id`            | integer | header | Primary key               |
+| `username`      | string  | header | Unique username           |
+| `name`          | string  | header | First name of user        |
+| `password`      | string  | header | User password             |
+
+##### Success Reponse
+**Code:** `201 Created` \
+**Content example**
+```
+{
+  "id": 1,
+  "username": "dwight",
+  "name": Dwight Schrute
+}
+```
+
+---
+
+### Language-Word related
+Each endpoint manipulates information about languages, words and guess/answer feedback.
+- [Get Language Words](): `GET /api/language`
+- [Get Next Word](): `POST /api/language/head`
+- [Get Guess/Answer Feedback](): `GET /api/language/guess`
+
+#### Get Language Words
+**URL:** `/api/language` \
+**Method:** `GET` \
+**Auth required:** Yes
+- `Bearer <JSON Web Token>`
+
+##### Request Body
+*Requires `headers: {'Content-Type': 'application/json'}`*
+
+##### Success Reponse
+**Code:** `200 OK` \
+**Content example**
+```
+{
+  "nextWord": "casa",
+  "totalScore": 2,
+  "wordCorrectCount": 0,
+  "wordIncorrectCount": 0,
+  "answer: "house",
+  isCorrect: true,
+}
+```
+
+#### Get Next Word
+**URL:** `/api/language/head` \
+**Method:** `GET` \
+**Auth required:** Yes
+- `Bearer <JSON Web Token>`
+
+##### Request Body
+*Requires `headers: {'Content-Type': 'application/json'}`*
+
+##### Success Reponse
+**Code:** `200 OK` \
+**Content example**
+```
+{
+  "nextWord": "casa",
+  "totalScore": 2,
+  "wordCorrectCount": 0,
+  "wordIncorrectCount": 0,
+  "answer: "house",
+  isCorrect: true,
+}
+```
+
+#### Guess/Answer Feedback
+**URL:** `/api/language/guess` \
+**Method:** `POST` \
+**Auth required:** Yes
+- `Bearer <JSON Web Token>`
+
+##### Request Body
+*Requires `headers: {'Content-Type': 'application/json'}`*
+```
+{
+  "name": "Dwight Schrute"
+  "username": "dwight",
+  "password": "pass"
+}
+```
+| Name                 | Type       | In     | Description                 |
+| ---------------------| ---------- | ------ | --------------------------- |
+| `nextWord`           | text       | header | Next word after guess       |
+| `totalScore`         | integer    | header | Score among all words guess |
+| `wordCorrectCount`   | integer    | header | Word correct answer score   |
+| `wordIncorrectCount` | integer    | header | Word incorrect answer score |
+| `answer`             | text       | header | Correct answer              |
+| `isCorrect`          | boolean    | header | Feedback for previous guess |
+
+##### Success Reponse
+**Code:** `200 OK` \
+**Content example**
+```
+{
+  "nextWord": "casa",
+  "totalScore": 2,
+  "wordCorrectCount": 0,
+  "wordIncorrectCount": 0,
+  "answer: "house",
+  isCorrect: true,
+}
+```
+
+---
+
+#### Login
+**URL:** `/api/auth/token` \
+**Method:** `POST` \
+**Auth required:** Yes
+
+###### Request Body
+```
+{
+  "username": "dwight",
+  "password": "password",
+}
+```
+
+| Name       | Type    | In     | Description       |
+| -----------| ------- | ------ | ----------------- |
+| `username` | string  | header | Unique username   |
+| `password` | string  | header | User password     |
+
+##### Success Response
+**Code:** `200 OK` \
+**Content example**
+```
+{
+  "authToken": &lt;JSON Web Token&gt;
+}
+```
+
+---
+
+#### Refresh Token
+**URL:** `/api/auth/token` \
+**Method:** `PUT` \
+**Auth required:** Yes
+- `Bearer <JSON Web Token>`
+
+##### Success Response
+**Code:** `200 OK` \
+**Content example**
+```
+{
+  "authToken": &lt;JSON Web Token&gt;
+}
+```
+
+---
+
+#### Registration
+**URL:** `/api/user` \
+**Method:** `POST` \
+**Auth required:** No
+- `Bearer my-secret-key`
+
+##### Request Body
+*Requires `headers: {'Content-Type': 'application/json'}`*
+```
+{
+  "name": "Dwight Schrute"
+  "username": "dwight",
+  "password": "pass"
+}
+```
+| Name            | Type    | In     | Description               |
+| ----------------| ------- | ------ | ------------------------- |
+| `id`            | integer | header | Primary key               |
+| `username`      | string  | header | Unique username           |
+| `name`          | string  | header | First name of user        |
+| `password`      | string  | header | User password             |
+
+##### Success Reponse
+**Code:** `201 Created` \
+**Content example**
+```
+{
+  "id": 1,
+  "username": "dwight",
+  "name": Dwight Schrute
+}
+```
+
+---
+
+### Screenshots
+
+Register Page
+:-------------------------:
+![Register Page]()
+
+Login Page
+:-------------------------:
+![Login Page]()
+
+Dashboard
+:-------------------------:
+![Dashboard]()
+
+Word Page
+:-------------------------:
+![Home Page]()
+
+Correct Answer Page
+:-------------------------:
+![User Lists]()
+
+Incorrect Answer Page
+:-------------------------:
+![List Page]()
+
+---
+
+## Development Roadmap
+This is v1.0 of the app, but future enhancements are expected to include:
+- More user account management functionalities
+- More languages and words
+- User may add words to languages
+
+---
+
+## Local Dev Set Up
 
 To setup the application
 
@@ -129,3 +472,22 @@ npm run cypress:run
 ```
 
 This will save video recordings of the test runs in the directory `./cypress/videos/`.
+```
+
+### Configuring Postgres
+For tests involving time to run properly, configure your Postgres database to run in the UTC timezone.
+
+1. Locate the `postgresql.conf` file for your Postgres installation.
+   1. E.g. for an OS X, Homebrew install: `/usr/local/var/postgres/postgresql.conf`
+   2. E.g. on Windows, _maybe_: `C:\Program Files\PostgreSQL\11.2\data\postgresql.conf`
+   3. E.g  on Ubuntu 18.04 probably: '/etc/postgresql/10/main/postgresql.conf'
+2. Find the `timezone` line and set it to `UTC`:
+
+```conf
+# - Locale and Formatting -
+
+datestyle = 'iso, mdy'
+#intervalstyle = 'postgres'
+timezone = 'UTC'
+#timezone_abbreviations = 'Default'     # Select the set of available time zone
+```
