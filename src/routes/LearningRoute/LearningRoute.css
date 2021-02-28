@@ -112,7 +112,7 @@ section span.incorrect {
 }
 
 
-@media all and (min-width: 700px) {
+@media only screen and (min-width: 700px) {
   .DisplayScore span {
     margin: 100px 0;
   }
