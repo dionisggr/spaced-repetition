@@ -71,7 +71,7 @@ https://github.com/dionisggr/spaced-repetition-api
 
 Register Page
 :-------------------------:
-![Register Page](https://github.com/dionisggr/spaced-repetition/blob/main/public/wireframes/register.png)
+![Register Page](https://github.com/dionisggr/spaced-repetition/blob/main/public/wireframes/registration.png)
 
 Login Page
 :-------------------------:
