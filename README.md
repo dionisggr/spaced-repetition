@@ -71,7 +71,7 @@ https://github.com/dionisggr/spaced-repetition-api
 
 Register Page
 :-------------------------:
-![Register Page](https://github.com/dionisggr/spaced-repetition/blob/main/public/wireframes/registration.png)
+![Register Page](https://github.com/dionisggr/spaced-repetition/blob/main/public/wireframes/register.png)
 
 Login Page
 :-------------------------:
@@ -401,7 +401,7 @@ Each endpoint manipulates information user registration, login and authorization
 
 Register Page
 :-------------------------:
-![Register Page](https://github.com/dionisggr/spaced-repetition/blob/main/public/screenshots/registration.png)
+![Register Page](https://github.com/dionisggr/spaced-repetition/blob/main/public/screenshots/register.png)
 
 Login Page
 :-------------------------:
