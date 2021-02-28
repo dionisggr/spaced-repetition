@@ -1,9 +1,3 @@
-label.dashboard {
-  font-size: 25px;
-  font-weight: bolder;
-  margin: 15px;
-}
-
 .dashboard h2 {
   font-size: 20px;
 }
@@ -14,31 +8,42 @@ label.dashboard {
 }
 
 .dashboard h4 {
-  margin: 15px;
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 .dashboard ul {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   list-style-type: none;
   padding-left: 0;
   width: 100%;
+  max-width: 1000px;
   margin-bottom: 30px;
 }
 
 .dashboard li {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   border: solid 1px rgb(36, 0, 77);
   border: solid 1px rgba(2, 87, 185, 0.445);
   background-color: rgba(0, 47, 255, 0.103);
-  border-radius: 3px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 80%;
-  max-width: 500px;
-  padding: 10px;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin: 5px;
+}
+
+.dashboard label:not(label.dashboard, label.correct) {
+  align-self: flex-end;
+}
+
+label.dashboard {
+  font-size: 25px;
+  font-weight: bolder;
+  margin: 15px;
+  margin-top: 7vh;
 }
 
 .practice-words {
@@ -66,7 +71,7 @@ label.score {
   font-weight: bolder;
   padding: 15px 35px;
   border-radius: 5px;
-  margin: 25px 0;
-  background-color: rgba(0, 128, 0, 0.603);
+  margin: 50px 0;
+  background-color: rgb(3, 248, 3);
   margin-bottom: 150px;
 }

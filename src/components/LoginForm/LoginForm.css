@@ -7,3 +7,13 @@ div[role=alert], div[role=alert] p {
   margin: 0;
   color: rgb(223, 2, 2);
 }
+
+img {
+  margin-top: 7%;
+}
+
+@media only screen and (min-width: 600px) {
+  img {
+    margin-top: 75px;
+  }
+}

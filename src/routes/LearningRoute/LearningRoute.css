@@ -1,22 +1,54 @@
+h2.correct {
+  color: green;
+}
+
+h2.wrong {
+  color: red;
+}
+
 .DisplayScore {
   display: flex;
   height: fit-content;
 }
 
-.DisplayScore span {
-  margin: 15% 0;
+.DisplayScore h2 {
+  margin-top: 5vw;
+}
+
+.DisplayScore span:not(label span) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 25px;
   font-weight: bolder;
+  width: 100%;
+  height: 15vw;
+  min-height: 75px;
+  max-height: 150px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .DisplayScore label {
-  margin-top: 10px;
+  text-align: center;
+  width: 100%;
   font-size: 14px;
+  font-size: 4vmin;
 }
 
 .DisplayFeedback {
   display: flex;
   justify-content: center;
+}
+
+.DisplayFeedback p {
+  margin: 0;
+  text-align: center;
+}
+
+.DisplayScore p {
+  margin: 35px 0;
+  font-weight: bolder;
 }
 
 section span.correct {
@@ -30,11 +62,6 @@ section span.incorrect {
   font-size: 20px;
   font-weight: bolder;
   margin-left: 4px;
-}
-
-.DisplayScore p {
-  margin: 35px 0;
-  font-weight: bolder;
 }
 
 .translation {
@@ -61,14 +88,39 @@ section span.incorrect {
   height: 50px;
 }
 
+.translation button {
+  text-decoration: none;
+  border: solid 1px black;
+  font-weight: bolder;
+  padding: 15px 35px;
+  border-radius: 5px;
+  margin: 5vw 0 125px 0;
+  background-color: rgb(3, 248, 3);
+}
+
 .DisplayFeedback span {
   display: inline-block;
   padding: 0 5px;
   font-weight: bold;
 }
 
+
+@media only screen and (min-width: 350px) {
+  .DisplayScore label {
+    font-size: 1.7vh;
+  }
+}
+
+
 @media all and (min-width: 700px) {
   .DisplayScore span {
     margin: 100px 0;
+  }
+}
+
+
+@media only screen and (min-width: 800px) {
+  .DisplayScore label {
+    font-size: 2vh;
   }
 }

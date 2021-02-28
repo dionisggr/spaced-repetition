@@ -4,4 +4,11 @@
 
 .login h2 {
   margin-top: 35px;
+  margin-top: 8vw;
+}
+
+@media only screen and (min-width: 800px) {
+  .login h2 {
+    margin-top: 7vh;
+  }
 }

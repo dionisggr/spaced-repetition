@@ -77,18 +77,18 @@ class LearningRoute extends Component {
 
     const h2 =
       (isCorrect === undefined || isCorrect === null)
-        ? 'Translate the word:'
+        ? <h2>Translate the word:</h2>
         : (isCorrect === false)
-          ? 'Good try, but not quite right :('
+          ? <h2 className='wrong'>Good try, but not quite right :(</h2>
           : (isCorrect === true)
-            ? 'You were correct! :D'
+            ? <h2 className='correct'>You were correct! :D</h2>
             : null;
     
     const feedback = 
       (isCorrect === null || isCorrect === undefined)
         ? null
         : <div className='DisplayFeedback'>
-            <p>The correct translation for {word} was {answer} and you chose {guess}!</p>
+            <p>The correct translation for <b>{word}</b> was <b>{answer}</b> and you chose {guess}!</p>
           </div>
     
     const button =
@@ -102,7 +102,7 @@ class LearningRoute extends Component {
     return (
       <>
         <section className='DisplayScore'>
-          <h2>{h2}</h2>
+          {h2}
           <span>{word}</span>
         <label>
             You have answered this word correctly
@@ -128,9 +128,9 @@ class LearningRoute extends Component {
                 </>
               : null
           }
+          {feedback}
           {button}
         </form>
-        {feedback}
       </>
     );
   }
