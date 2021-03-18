@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm'
 import icon from '../../img/icon.svg';
 import './RegistrationRoute.css';

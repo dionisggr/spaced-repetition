@@ -4,6 +4,7 @@ import { Input, Required, Label } from "../Form/Form";
 import AuthApiService from "../../services/auth-api-service";
 import UserContext from "../../contexts/UserContext";
 import Button from "../Button/Button";
+import Loader from '../Loader/Loader';
 import "./RegistrationForm.css";
 
 class RegistrationForm extends Component {
@@ -13,36 +14,39 @@ class RegistrationForm extends Component {
 
   static contextType = UserContext;
 
-  state = { error: null };
+  state = { error: null, loggin: false };
 
   firstInput = React.createRef();
 
   handleSubmit = async (ev) => {
     ev.preventDefault();
     const { name, username, password } = ev.target;
+
+    this.setState({ ...this.state, logging: true });
+
     await AuthApiService.postUser({
       name: name.value,
       username: username.value,
       password: password.value,
     })
       .catch((res) => {
-        this.setState({ error: res.error });
+        this.setState({ error: res.error, logging: false });
       });
-    
-      await AuthApiService.postLogin({
-        username: username.value,
-        password: password.value,
+      
+    await AuthApiService.postLogin({
+      username: username.value,
+      password: password.value,
+    })
+      .then((res) => {
+        name.value = "";
+        username.value = "";
+        password.value = "";
+        this.context.processLogin(res.authToken);
+        this.props.history.push('/');
       })
-        .then((res) => {
-          name.value = "";
-          username.value = "";
-          password.value = "";
-          this.context.processLogin(res.authToken);
-          this.props.history.push('/');
-        })
-        .catch((res) => {
-          this.setState({ error: res.error });
-        });
+      .catch((res) => {
+        this.setState({ error: res.error, logging: false });
+      });
   };
 
   componentDidMount() {
@@ -51,6 +55,11 @@ class RegistrationForm extends Component {
 
   render() {
     const { error } = this.state;
+
+    if (this.state.logging) {
+      return <Loader />
+    };
+
     return (
       <form onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p>{error}</p>}</div>

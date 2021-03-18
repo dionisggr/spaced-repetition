@@ -1,0 +1,42 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading h3 {
+  font-size: 5vmin;
+  align-self: center;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 20vmin;
+  min-width: 75px;
+  max-width: 16vmin;
+  min-height: 75px;
+  height: 20vmin;
+  max-height: 16vmin;
+  margin-top: 3vmin;
+  animation: spin 2s linear infinite;
+  align-self: center;
+}
+
+
+.lists .loading h3 {
+  margin-top: 55px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+@media only screen and (min-width: 768px) {
+  .loading h3 {
+    font-size: 30px;
+  }
+}
