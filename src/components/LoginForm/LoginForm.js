@@ -3,6 +3,7 @@ import { Input, Label } from "../Form/Form";
 import AuthApiService from "../../services/auth-api-service";
 import UserContext from "../../contexts/UserContext";
 import Button from "../Button/Button";
+import Loader from '../Loader/Loader';
 import './LoginForm.css';
 
 class LoginForm extends Component {
@@ -20,7 +21,7 @@ class LoginForm extends Component {
     ev.preventDefault();
     const { username, password } = ev.target;
 
-    this.setState({ error: null });
+    this.setState({ error: null, logging: true });
 
     AuthApiService.postLogin({
       username: username.value,
@@ -43,6 +44,11 @@ class LoginForm extends Component {
 
   render() {
     const { error } = this.state;
+
+    if (this.state.logging) {
+      return <Loader />;
+      
+    }
     return (
       <form className="LoginForm" onSubmit={this.handleSubmit}>
         <div>
