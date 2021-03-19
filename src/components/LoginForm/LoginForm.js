@@ -17,6 +17,13 @@ class LoginForm extends Component {
 
   firstInput = React.createRef();
 
+  demo = (evt) => {
+    const form = evt.target.parentElement.parentElement;
+
+    form["login-username-input"].value = "dwight";
+    form["login-password-input"].value = "pass";
+  };
+
   handleSubmit = (ev) => {
     ev.preventDefault();
     const { username, password } = ev.target;
@@ -70,7 +77,10 @@ class LoginForm extends Component {
           />
         </div>
         <div role="alert">{error && <p>{error}</p>}</div>
-        <Button type="submit">Login</Button>
+        <div className="buttons">
+          <Button type="submit">Login</Button>
+          <Button type="submit" onClick={this.demo}>Demo</Button>
+        </div>
       </form>
     );
   }
