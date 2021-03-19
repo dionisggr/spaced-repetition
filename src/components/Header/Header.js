@@ -35,7 +35,7 @@ class Header extends Component {
     return (
       <header>
         <h1>
-          <Link to="/">Spaced repetition</Link>
+          <Link to="/">Spaced Repetition</Link>
         </h1>
         {
           TokenService.hasAuthToken()
